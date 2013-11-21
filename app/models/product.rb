@@ -9,7 +9,7 @@
 # end
 
 class Product < ActiveRecord::Base
-	default_scope :order => 'title'
+	default_scope :order => 'title' # para ordernar los titulos de los productos alfabeticamente
 
   validates :title, :description, :image_url, :presence => true
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}

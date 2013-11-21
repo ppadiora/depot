@@ -12,10 +12,10 @@
 	<div class="entry" >
 		<%= image_tag(product.image_url) %>
 		<h3><%= product.title %></h3>
-		<%=sanitize product.description %> 
+		<%= sanitize product.description %> 
 		<div class="price_line" >
 			<!-- <span class="price" ><%= product.price %></span> -->
-		<!-- 	<span class="price"><%= number_to_currency(product.price) %></span> -->
+		<!-- 	<span class="price"><%= number_to_currency(product.price) %></span> sustituimos las anteriores por esta nueva donde podemos elegir euro como unidad de moneda. Para colocar un espacio entre la cifra y el simbolo empleamos la última expresión :format => "%n %u" con ese espacio entre ambas letras!--> 
 		<span class="price"><%= number_to_currency(product.price, :unit => "€", :format => "%n %u") %></span>
 		</div>
 	</div>

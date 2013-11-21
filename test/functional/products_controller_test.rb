@@ -53,4 +53,14 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
+
+  # test "should get index" do
+  #    get :index
+  #    assert_response :success
+  #    # este test comprueba que la página index se encuentra y nos da una respuesta positiva :success.
+  #    # ahora añadimos nuevo; que además la respuesta nos confirme que existe una plantilla, 
+  #    # la info de los productos y un precio.
+  #    assert_select '#product_list' 
+  #    assert_select '.list_actions a', :minimum => 3
+  # end
 end
