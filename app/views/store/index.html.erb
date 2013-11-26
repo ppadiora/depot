@@ -1,6 +1,6 @@
 <!-- <h1>Store#index</h1>
 <p>Find me in app/views/store/index.html.erb</p> -->
-
+<%= (pluralize session[:counter], 'time') if session[:counter] > 5 %> 
 <!-- Reeditamos el index para presentar otra vista de la página inicial -->
 <% if notice %>
 <p id="notice" ><%= notice %></p>
@@ -10,13 +10,15 @@
 
 <% @products.each do |product| %>
 	<div class="entry" >
-		<%= image_tag(product.image_url) %>
+		<%= link_to image_tag(product.image_url), line_items_path(:product_id => product), :method => 'post' %>
+		<!--<%= image_tag(product.image_url) %>! cambiamos esta etiqueta por la anterior para que al clickar sobre la imagen del producto también se pueda añadir el producto al carrito-->
 		<h3><%= product.title %></h3>
 		<%= sanitize product.description %> 
 		<div class="price_line" >
 			<!-- <span class="price" ><%= product.price %></span> -->
 		<!-- 	<span class="price"><%= number_to_currency(product.price) %></span> sustituimos las anteriores por esta nueva donde podemos elegir euro como unidad de moneda. Para colocar un espacio entre la cifra y el simbolo empleamos la última expresión :format => "%n %u" con ese espacio entre ambas letras!--> 
-		<span class="price"><%= number_to_currency(product.price, :unit => "€", :format => "%n %u") %></span>
+			<span class="price"><%= number_to_currency(product.price, :unit => "€", :format => "%n %u") %></span>
+			<%= button_to 'Add to Cart' , line_items_path(:product_id => product) %>
 		</div>
 	</div>
 <% end %>
